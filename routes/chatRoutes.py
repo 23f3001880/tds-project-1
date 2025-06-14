@@ -4,6 +4,7 @@ from core.rag import query_index
 from schemas.schemas import QuestionRequest
 from core.imgExtraction import decode_image, extract_text_from_image
 from utils.shared_limiter import limiter
+import json
 
 chat = APIRouter()
 
@@ -29,6 +30,6 @@ async def chatQuery(data: QuestionRequest, request: Request):
         query += "\n\n" + "**Text Extracted From Question** : " + ocr_text
 
     response_str = query_index(index=index, query=query, intelligence=intelligence)
-    response = response_str.json()
+    response = json.loads(response_str)
 
     return JSONResponse(content=response)
