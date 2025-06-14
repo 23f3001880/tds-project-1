@@ -28,6 +28,7 @@ async def chatQuery(data: QuestionRequest, request: Request):
         ocr_text = await extract_text_from_image(image=img)
         query += "\n\n" + "**Text Extracted From Question** : " + ocr_text
 
-    response = query_index(index=index, query=query, intelligence=intelligence)
+    response_str = query_index(index=index, query=query, intelligence=intelligence)
+    response = response_str.json()
 
     return JSONResponse(content=response)
