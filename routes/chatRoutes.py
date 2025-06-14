@@ -10,7 +10,7 @@ chat = APIRouter()
 @chat.get('/api', tags=['chat_main_endpoint'])
 @limiter.limit("20/minute")
 async def chatWelcome(request: Request):
-    return JSONResponse({'message': 'Welcome to the Chat Endpoint!'})
+    return JSONResponse(content={'message': 'Welcome to the Chat Endpoint!'})
 
 
 # ImageUrl would be a base64 string (validate it!) and the query should be limited by length
@@ -30,4 +30,4 @@ async def chatQuery(data: QuestionRequest, request: Request):
 
     response = query_index(index=index, query=query, intelligence=intelligence)
 
-    return JSONResponse(response)
+    return JSONResponse(content=response)

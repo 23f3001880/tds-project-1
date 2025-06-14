@@ -24,7 +24,7 @@ app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 @app.get('/')
 @limiter.limit("20/minute")
 async def root(request: Request):
-    return JSONResponse({'message': 'Welcome to The TDS RAG Project API!'})
+    return JSONResponse(content={'message': 'Welcome to The TDS RAG Project API!'})
 
 app.include_router(chat)
 
