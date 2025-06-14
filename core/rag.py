@@ -128,7 +128,7 @@ intelligence_prompt = PromptTemplate(
     **Instructions:**
 
     1.  **Identify the Question:** Locate the user's primary question and any relevant text extracted from an image at the end of the input.
-    2.  **Formulate Response:** Prioritize Solving the **Text Extracted from Image** part then the Context
+    2.  **Formulate Response:** Prioritize Solving the **Text Extracted from Image** part using your intelligence
     4.  AND DON'T FORGET TO ADD SOURCE URLS FROM THE CONTEXT 
     5.  **Format Output:** Your response **must** be in the following strict JSON format:
 
