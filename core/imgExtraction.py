@@ -5,8 +5,6 @@ import io, base64
 import asyncio
 from concurrent.futures import ThreadPoolExecutor
 
-pytesseract.pytesseract.tesseract_cmd = r'C:/Program Files/Tesseract-OCR/tesseract.exe'
-
 executor = ThreadPoolExecutor(max_workers=2)  # Adjust number of threads as needed
 
 def decode_image(base64_img: str) -> Image.Image:
