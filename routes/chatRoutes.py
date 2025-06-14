@@ -26,7 +26,7 @@ async def chatQuery(data: QuestionRequest, request: Request):
         intelligence = True
         img = decode_image(base64_img=data.image)
         ocr_text = await extract_text_from_image(image=img)
-        query += "\n\n" + "Text Extracted From Question : " + ocr_text
+        query += "\n\n" + "**Text Extracted From Question** : " + ocr_text
 
     response = query_index(index=index, query=query, intelligence=intelligence)
 
