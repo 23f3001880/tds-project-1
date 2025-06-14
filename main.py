@@ -1,5 +1,6 @@
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
 from routes.chatRoutes import chat
 from core.rag import get_or_build_index
 from slowapi.errors import RateLimitExceeded
@@ -7,6 +8,14 @@ from slowapi.extension import _rate_limit_exceeded_handler
 from utils.shared_limiter import limiter
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Or replace * with your Streamlit app's domain for more security
+    allow_credentials=True,
+    allow_methods=["*"],  # This allows OPTIONS, POST, GET, etc.
+    allow_headers=["*"],  # This allows Authorization, Content-Type, etc.
+)
 
 app.state.index = get_or_build_index()
 app.state.limiter = limiter
